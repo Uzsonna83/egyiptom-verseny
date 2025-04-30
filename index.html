@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Versenyfeladatok</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('background.jpg');
+      background-size: 80%;          /* a kép kitölti a képernyőt */
+      background-position: center;     /* a kép középre igazítása */
+      background-repeat: no-repeat;    /* ne ismétlődjön a kép */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      color: 2F4F4F;
+    }
+    button {
+      margin: 15px;
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: #999;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <h1>Versenyfeladatok – Az ókori Egyiptom</h1>
+  <button onclick="window.location.href='puzzle/index.html'">1. feladat: Puzzle kirakása</button>
+  <button id="quizBtn" disabled>2. feladat: Kvíz kitöltése</button>
+
+ <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const gomb = document.getElementById("quizBtn");
+    const puzzleDone = localStorage.getItem("puzzleDone");
+
+    console.log("DEBUG - puzzleDone:", puzzleDone); // debug kiírás
+
+    if (puzzleDone === "true") {
+      gomb.disabled = false;
+      gomb.style.opacity = "1";
+      gomb.onclick = () => window.location.href = 'egyiptom-teszt.html';
+    } else {
+      gomb.disabled = true;
+      gomb.style.opacity = "0.5";
+      gomb.onclick = () => alert("Először oldjátok meg az első feladatot (puzzle)!");
+    }
+  });
+</script>
+
+</body>
+</html>
